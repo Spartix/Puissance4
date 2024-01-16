@@ -1,6 +1,5 @@
-from ctypes import List
-
-def Gen() -> List[List[int]]:
+from interface.grille import Grille
+def Gen() -> Grille:
     lst = list()
     for _ in range(6):
         lss = list()

@@ -1,6 +1,7 @@
 from random import choice
 class color:
-    colors = ["#FFFFF"]
+    
     def random():
+        colors = ["#FFFFF"]
         return choice(colors)
         
