@@ -12,6 +12,7 @@ def question(player:int) -> str:
         return retour
     except:
         question(player)
+
 def play() -> None:
     grille:Grille = Gen()
     actuel:int = 1
@@ -28,9 +29,10 @@ def play() -> None:
         
         
 def win(grille:Grille) -> bool:
+    print(vertical(grille),horizontal(grille))
     return vertical(grille)[0] or horizontal(grille)[0]
-def trie(ligne):
-    return ligne[0]
+
+
 def winner(grille:Grille):
     lst = ([vertical(grille), horizontal(grille)])
     lst.sort(key=lambda info: info[0],reverse=True)

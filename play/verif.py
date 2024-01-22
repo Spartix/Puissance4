@@ -8,15 +8,14 @@ def horizontal(grille:Grille) -> Tuple[bool,int]:
         compare:int = 0
         nb_compare:int = 0
         for elt in lst:
-            if compare != 0:
-                if compare == elt:
-                    nb_compare += 1
-                else:
-                    compare = elt
-                    nb_compare = 0
-                if nb_compare == 4 and compare != 0:
-                    return True,elt
-        return False,0
+            if compare == elt:
+                nb_compare += 1
+            else:
+                compare = elt
+                nb_compare = 1
+            if nb_compare == 4 and compare != 0:
+                return True,elt
+    return False,0
     
     
 def vertical(grille:Grille):
