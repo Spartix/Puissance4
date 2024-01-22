@@ -33,3 +33,26 @@ def vertical(grille:Grille):
                 return True,compare
         index += 1
     return False,0
+
+def diagonale_droit(grille:Grille,start):
+    compare = 0
+    nb_compare = 0
+    while start < 6:
+        if compare == grille[start][start]:
+            nb_compare += 1
+        else:
+            compare = grille[start][start]
+            nb_compare = 1
+        if nb_compare == 4 and compare !=0:
+            return True,compare
+    return False,0
+        
+        
+
+def diagonale(grille:Grille):
+    isTrue = (False,0)
+    for i in range(3):
+        if isTrue[0] or diagonale_droit(grille,i)[0]:
+            isTrue = diagonale_droit(grille,i)
+    return isTrue
+    

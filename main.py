@@ -1,4 +1,4 @@
-from play.verif import horizontal, vertical
+from play.verif import diagonale, horizontal, vertical
 from utils.grille import Gen
 from interface.grille import Grille
 from play.start import *
@@ -25,11 +25,10 @@ def play() -> None:
             actuel =    2
         else:
             actuel = 1
-    print(winner(grille))
+    print(f"le joueur {winner(grille)} a gagné")
         
         
 def win(grille:Grille) -> bool:
-    print(vertical(grille),horizontal(grille))
     return vertical(grille)[0] or horizontal(grille)[0]
 
 
@@ -39,4 +38,14 @@ def winner(grille:Grille):
     return lst[0][1]
 
 
-play()
+"play()"
+gtest = [
+         [1, 1, 0, 0, 0, 0],
+         [0, 1, 2, 0, 0, 0],
+         [0, 0, 0, 2, 0, 0],
+         [0, 0, 0, 1, 2, 0],
+         [0, 0, 0, 0, 0, 2],
+         [0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0]
+         ]
+print(diagonale(gtest))
