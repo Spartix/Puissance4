@@ -1,4 +1,4 @@
-from play.verif import horizontal
+from play.verif import horizontal, vertical
 from utils.grille import Gen
 from interface.grille import Grille
 from play.start import *
@@ -15,7 +15,7 @@ def question(player:int) -> str:
 def play() -> None:
     grille:Grille = Gen()
     actuel:int = 1
-    while not win(grille)[0]:
+    while not win(grille):
         print(print_grille(grille))
         print(f"Le joueur {actuel} joue...")
         joue = question(actuel)
@@ -24,11 +24,17 @@ def play() -> None:
             actuel =    2
         else:
             actuel = 1
-        
+    print(winner(grille))
         
         
 def win(grille:Grille) -> bool:
-    return horizontal(grille)
-    return False
+    return vertical(grille)[0] or horizontal(grille)[0]
+def trie(ligne):
+    return ligne[0]
+def winner(grille:Grille):
+    lst = ([vertical(grille), horizontal(grille)])
+    lst.sort(key=lambda info: info[0],reverse=True)
+    return lst[0][1]
+
 
 play()
