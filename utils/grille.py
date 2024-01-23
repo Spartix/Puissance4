@@ -1,7 +1,7 @@
 from interface.grille import Grille
 def Gen() -> Grille:
     lst = list()
-    for _ in range(7):
+    for _ in range(6):
         lss = list()
         for _ in range(6):
             lss.append(0)

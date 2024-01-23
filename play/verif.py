@@ -34,37 +34,41 @@ def vertical(grille:Grille):
         index += 1
     return False,0
 
-def diagonale_droit(grille:Grille,start):
-    compare = 0
-    nb_compare = 0
-    while start < 6:
-        if compare == grille[start][start]:
-            nb_compare += 1
-        else:
-            compare = grille[start][start]
-            nb_compare = 1
-        if nb_compare == 4 and compare != 0 :
-            return True,compare
-        start += 1
-    return False,0
 
-def diagonale_droit_second(grille:Grille,start:int):
+def diagonale_droit(grille:Grille,start:int):
     compare = 0
     nb_compare = 0
-    while start < 6:
-        if compare == grille[start][start]:
-            nb_compare += 1
-        else:
-            compare = grille[start][start]
-            nb_compare = 1
-        if nb_compare == 4 and compare != 0 :
-            return True,compare
-        start += 1
+    while start < 5:
+            if compare == grille[start][start+1]:
+                nb_compare += 1
+            else:
+                compare = grille[start][start+1]
+                nb_compare = 1
+            if nb_compare == 4 and compare != 0 :
+                return True,compare
+            start += 1
     return False,0
-        
+    
+def diagonale_gauche(grille:Grille,start:int):
+    compare = 0
+    nb_compare = 0
+    while start > 0:
+            print(f"found {grille[start][start]} in {start,start}")
+            if compare == grille[start][start]:
+                nb_compare += 1
+            else:
+                compare = grille[start][start]
+                nb_compare = 1
+            if nb_compare == 4 and compare != 0 :
+                return True,compare
+            start -= 1
+    return False,0
 
 def diagonale(grille:Grille):
     for i in range(3):
         if diagonale_droit(grille,i)[0]:
             return diagonale_droit(grille,i)
-    return False
+    for a in range(5,-1,-1):
+        if diagonale_gauche(grille,a)[0]:
+            return diagonale_gauche(grille,a)
+    return False,0
