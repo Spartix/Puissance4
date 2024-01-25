@@ -35,38 +35,90 @@ def vertical(grille:Grille):
     return False,0
 
 
-def diagonale_droit(grille:Grille,start_ligne:int,start_colone):
-    comaprer = 0
+def diagonale_droit(grille:Grille,start_colone:int):
     nb_compare = 0
-    for _ in range(6):
-        if(grille[start_ligne][start_colone] == comaprer):
+    comparer = 0
+    grille.reverse()
+    for lst in grille:
+        lst:Ligne;
+        if(start_colone > 5):
+            grille.reverse()
+            return False,0
+        if lst[start_colone] == comparer:
             nb_compare += 1
         else:
-            comaprer = grille[start_ligne][start_colone]
-        start_ligne -= 1
-        start_colone +=1
-        
-    
-def diagonale_gauche(grille:Grille,start:int):
-    compare = 0
-    nb_compare = 0
-    while start > 0:
-            print(f"found {grille[start][start]} in {start,start}")
-            if compare == grille[start][start]:
-                nb_compare += 1
-            else:
-                compare = grille[start][start]
-                nb_compare = 1
-            if nb_compare == 4 and compare != 0 :
-                return True,compare
-            start -= 1
+            comparer = lst[start_colone]
+            nb_compare = 1
+        start_colone += 1
+        if( nb_compare == 4 and comparer != 0):
+            grille.reverse()
+            return True,comparer
+    grille.reverse()
     return False,0
+
+def diagonale_droit_hauteur(grille:Grille,starter:int):
+    nb_compare = 0
+    comparer = 0
+    colone = 0
+    grille.reverse()
+    for _ in range(4):
+        if grille[starter][colone] == comparer:
+            nb_compare += 1
+        else:
+            comparer = grille[starter][colone];nb_compare = 1
+        if nb_compare == 4 and comparer != 0:
+            return True,comparer
+        starter += 1
+        colone += 1
+    grille.reverse()
+    return False,0
+
+
+def diagonale_gauche(grille:Grille,start_colone:int):
+    nb_compare = 0
+    comparer = 0
+    grille.reverse()
+    for elt in grille:
+        if(start_colone > 5):
+            grille.reverse()
+            return False,0
+        if elt[start_colone] == comparer:
+            nb_compare += 1
+        else:
+            comparer = elt[start_colone]
+            nb_compare = 1
+        start_colone += 1
+        if( nb_compare == 4 and comparer != 0):
+            grille.reverse()
+            return True,comparer
+    grille.reverse()
+    return False,0
+
+def diagonale_gauche_hauteur(grille:Grille,starter:int):
+    nb_compare = 0
+    comparer = 0
+    colone = 0
+    grille.reverse()
+    for _ in range(4):
+        if grille[starter][colone] == comparer:
+            nb_compare += 1
+        else:
+            comparer = grille[starter][colone];nb_compare = 1
+        if nb_compare == 4 and comparer != 0:
+            return True,comparer
+        starter += 1
+        colone += 1
+    grille.reverse()
+    return False,0
+
 
 def diagonale(grille:Grille):
     for i in range(3):
         if diagonale_droit(grille,i)[0]:
             return diagonale_droit(grille,i)
-    for caca in range(5):
-        for proute in range(5):
-            diagonale_droit(caca,proute)
+        if diagonale_droit_hauteur(grille,i)[0]:
+            return diagonale_droit_hauteur(grille,i)
+        # print(diagonale_droit(grille,i))
+        # print(diagonale_droit_hauteur(grille,i))
     return False,0
+
