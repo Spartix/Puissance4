@@ -24,18 +24,22 @@ def vertical(grille:Grille):
     nb_compare = 0
     while index < 6:
         for i in range(7):
-            if compare == grille[i][index]:
-                nb_compare += 1
-            else:
-                nb_compare = 1
-                compare = grille[i][index]
-            if nb_compare == 4 and compare != 0:
-                return True,compare
+            try:
+                if compare == grille[i][index]:
+                    nb_compare += 1
+                else:
+                    nb_compare = 1
+                    compare = grille[i][index]
+                if nb_compare == 4 and compare != 0:
+                    return True,compare
+            except:
+                pass
         index += 1
     return False,0
 
 
 def diagonale_droit(grille:Grille,start_colone:int):
+    
     nb_compare = 0
     comparer = 0
     grille.reverse()
@@ -113,6 +117,19 @@ def diagonale_gauche_hauteur(grille:Grille,starter:int):
 
 
 def diagonale(grille:Grille):
+    """
+    Fonction diagonal donnant le numéro du joueur qui a gagné si et seulment si il a 4 jetons alignés en diagonal
+    grille(Grille): grille de puissance 4 à comparer
+    return (tuple(bool,int)): retourne un tuple contenant si il y a un gagnant et lequel
+    Exemples:
+    >>> diagonale([[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]])
+    False,0
+    >>> diagonale([[1,0,0,0,0,1],[1,0,0,0,1,0],[1,0,1,0,0,0],[1,0,0,0,0,0],[0,1,0,0,0,0],[1,0,0,0,0,0]])
+    True,1
+    """
+    assert(type(grille) == list)
+    assert(len(grille) == 6)
+    assert(len(grille[0]) == 6)
     for i in range(3):
         if diagonale_droit(grille,i)[0]:
             return diagonale_droit(grille,i)
