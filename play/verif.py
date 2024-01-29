@@ -138,4 +138,3 @@ def diagonale(grille:Grille):
         # print(diagonale_droit(grille,i))
         # print(diagonale_droit_hauteur(grille,i))
     return False,0
-
