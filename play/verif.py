@@ -3,7 +3,14 @@ from typing import Tuple
 
 
 def horizontal(grille:Grille) -> Tuple[bool,int]:
-    
+    '''
+    Fonction horizontal retournant si il y a un gagnant et lequel
+    grille(Grille): grille a comparer
+    return (tuple(bool,int)): le tuple gagner ou non ainsi que le gagant
+    '''
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     for lst in grille:
         lst:Ligne;
         compare:int = 0
@@ -19,7 +26,15 @@ def horizontal(grille:Grille) -> Tuple[bool,int]:
     return False,0
     
     
-def vertical(grille:Grille):
+def vertical(grille:Grille) -> tuple:
+    '''
+    Fonction veritcal retournant si il y a un gagnant et lequel
+    grille(Grille): grille a comparer
+    return (tuple(bool,int)): le tuple gagner ou non ainsi que le gagant
+    '''
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     index = 0
     compare = 0
     nb_compare = 0
@@ -40,7 +55,19 @@ def vertical(grille:Grille):
 
 
 def diagonale_droit(grille:Grille,start_colone:int):
-    
+    """
+    Fonction diagonal droit donnant le numéro du joueur qui a gagné si et seulment si il a 4 jetons alignés en diagonal de droite a gauche
+    grille(Grille): grille de puissance 4 à comparer
+    return (tuple(bool,int)): retourne un tuple contenant si il y a un gagnant et lequel
+    Exemples:
+    >>> diagonale_droit([[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]])
+    False,0
+    >>> diagonale_droit([[1,0,0,0,0,1],[1,0,0,0,1,0],[1,0,1,0,0,0],[1,0,0,0,0,0],[0,1,0,0,0,0],[1,0,0,0,0,0]])
+    False,0
+    """
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     nb_compare = 0
     comparer = 0
     grille.reverse()
@@ -62,6 +89,19 @@ def diagonale_droit(grille:Grille,start_colone:int):
     return False,0
 
 def diagonale_droit_hauteur(grille:Grille,starter:int):
+    """
+    Fonction diagonal droit donnant le numéro du joueur qui a gagné si et seulment si il a 4 jetons alignés en diagonal de droite a gauche
+    grille(Grille): grille de puissance 4 à comparer
+    return (tuple(bool,int)): retourne un tuple contenant si il y a un gagnant et lequel
+    Exemples:
+    >>> diagonale_droit_hauteur([[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]])
+    False,0
+    >>> diagonale_droit_hauteur([[1,0,0,0,0,1],[1,0,0,0,1,0],[1,0,1,0,0,0],[1,0,0,0,0,0],[0,1,0,0,0,0],[1,0,0,0,0,0]])
+    False,0
+    """
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     nb_compare = 0
     comparer = 0
     colone = 0
@@ -79,6 +119,19 @@ def diagonale_droit_hauteur(grille:Grille,starter:int):
     return False,0
 
 def diagonale_gauche(grille, start_colonne):
+    """
+    Fonction diagonal gauche donnant le numéro du joueur qui a gagné si et seulment si il a 4 jetons alignés en diagonal de gauche a droite
+    grille(Grille): grille de puissance 4 à comparer
+    return (tuple(bool,int)): retourne un tuple contenant si il y a un gagnant et lequel
+    Exemples:
+    >>> diagonale_gauche([[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]])
+    False,0
+    >>> diagonale_gauche([[1,0,0,0,0,1],[1,0,0,0,1,0],[1,0,1,0,0,0],[1,0,0,0,0,0],[0,1,0,0,0,0],[1,0,0,0,0,0]])
+    False,0
+    """
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     nb_compare = 0
     comparer = 0
     grille.reverse()
@@ -99,6 +152,19 @@ def diagonale_gauche(grille, start_colonne):
     return False, 0
 
 def diagonale_gauche_hauteur(grille, starter):
+    """
+    Fonction diagonal donnant le numéro du joueur qui a gagné si et seulment si il a 4 jetons alignés en diagonal de gauche a droite
+    grille(Grille): grille de puissance 4 à comparer
+    return (tuple(bool,int)): retourne un tuple contenant si il y a un gagnant et lequel
+    Exemples:
+    >>> diagonale_gauche_hauteur([[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[1,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]])
+    False,0
+    >>> diagonale_gauche_hauteur([[1,0,0,0,0,1],[1,0,0,0,1,0],[1,0,1,0,0,0],[1,0,0,0,0,0],[0,1,0,0,0,0],[1,0,0,0,0,0]])
+    False,0
+    """
+    assert(type(grille) == list)
+    assert(type(grille[0]) == list)
+    assert(type(grille[0][0] == int))
     nb_compare = 0
     comparer = 0
     colonne = 5  
