@@ -2,7 +2,7 @@ from play.verif import diagonale, horizontal, vertical
 from utils.grille import Gen
 from interface.grille import Grille
 from play.start import *
-
+import doctest
 
 def question(player:int) -> int:
     """
@@ -73,4 +73,6 @@ def winner(grille:Grille) -> int:
     lst.sort(key=lambda info: info[0],reverse=True)
     return lst[0][1]
 
+
+doctest.testmod(verbose=True)
 play()

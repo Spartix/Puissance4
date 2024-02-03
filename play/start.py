@@ -31,11 +31,14 @@ def DeleteLast(texte:str) -> str:
     """
     Function delete supprimant la derniere ligne d'une chaine de charactere
     texte(str): texte ou supprimer la derniere ligne  
-    return(str): texte sans la derniere ligne  
+    return(str): texte sans la derniere ligne 
+    Exemples:
+    >>> DeleteLast("slt\\ncv")
+    slt
     """
     assert(type(texte) == str)
 
-    
+
     lignes = texte.splitlines()
     lignes_sans_derniere = lignes[:-1]
     texte_sans_derniere = '\n'.join(lignes_sans_derniere)

@@ -7,17 +7,22 @@ class colors:
     """
     def random():
         """
-        return (str): couleurs aleatoire parmis la list color
+        return (str): couleurs aleatoire parmis la list color=
         """
         return choice(colors)
     def player(player:int): 
         """
         player(int): joueur dont on veut connaitre sa couleur
         return (str): couleurs choisi parmis la list color
+        Exemples:
+        >>> colors.player(1)
+        \033[33m
         """
         return color[player]
     def reset():
         """
         return (str): couleur reset
+        >>> colors.reset()
+        \033[0m
         """
         return "\033[0m"
