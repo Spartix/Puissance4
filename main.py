@@ -36,8 +36,9 @@ def play() -> None:
             actuel =    2
         else:
             actuel = 1
+    print(print_grille(grille))
     print(f"le joueur {winner(grille)} a gagné")
-        
+
         
 def win(grille:Grille) -> bool:
     """
@@ -74,5 +75,5 @@ def winner(grille:Grille) -> int:
     return lst[0][1]
 
 
-doctest.testmod(verbose=True)
+"doctest.testmod(verbose=True)"
 play()
