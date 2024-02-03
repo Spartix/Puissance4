@@ -3,6 +3,7 @@ from typing import Tuple
 
 
 def horizontal(grille:Grille) -> Tuple[bool,int]:
+    
     for lst in grille:
         lst:Ligne;
         compare:int = 0
@@ -77,43 +78,47 @@ def diagonale_droit_hauteur(grille:Grille,starter:int):
     grille.reverse()
     return False,0
 
-
-def diagonale_gauche(grille:Grille,start_colone:int):
+def diagonale_gauche(grille, start_colonne):
     nb_compare = 0
     comparer = 0
     grille.reverse()
-    for elt in grille:
-        if(start_colone > 5):
+    for lst in grille:
+        if start_colonne < 0:
             grille.reverse()
-            return False,0
-        if elt[start_colone] == comparer:
+            return False, 0
+        if lst[start_colonne] == comparer:
             nb_compare += 1
         else:
-            comparer = elt[start_colone]
+            comparer = lst[start_colonne]
             nb_compare = 1
-        start_colone += 1
-        if( nb_compare == 4 and comparer != 0):
+        start_colonne -= 1 
+        if nb_compare == 4 and comparer != 0:
             grille.reverse()
-            return True,comparer
+            return True, comparer
     grille.reverse()
-    return False,0
+    return False, 0
 
-def diagonale_gauche_hauteur(grille:Grille,starter:int):
+def diagonale_gauche_hauteur(grille, starter):
     nb_compare = 0
     comparer = 0
-    colone = 0
+    colonne = 5  
     grille.reverse()
     for _ in range(4):
-        if grille[starter][colone] == comparer:
+        if starter >= len(grille) or colonne < 0:  
+            grille.reverse()
+            return False, 0
+        if grille[starter][colonne] == comparer:
             nb_compare += 1
         else:
-            comparer = grille[starter][colone];nb_compare = 1
+            comparer = grille[starter][colonne]
+            nb_compare = 1
         if nb_compare == 4 and comparer != 0:
-            return True,comparer
+            grille.reverse()
+            return True, comparer
         starter += 1
-        colone += 1
+        colonne -= 1 
     grille.reverse()
-    return False,0
+    return False, 0
 
 
 def diagonale(grille:Grille):
@@ -135,6 +140,10 @@ def diagonale(grille:Grille):
             return diagonale_droit(grille,i)
         if diagonale_droit_hauteur(grille,i)[0]:
             return diagonale_droit_hauteur(grille,i)
+        if diagonale_gauche_hauteur(grille,i)[0]:
+            return diagonale_gauche_hauteur(grille,i)
+        if diagonale_gauche(grille,i)[0]:
+            return diagonale_gauche(grille,i)  
         # print(diagonale_droit(grille,i))
         # print(diagonale_droit_hauteur(grille,i))
     return False,0

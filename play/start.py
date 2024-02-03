@@ -15,14 +15,31 @@ def print_grille(grille:Grille):
     assert(type(Dessin) == list)
     assert(len(Dessin) == 3)
     
-    total = ""
+    total = "┌───┬───┬───┬───┬───┬───┐\n"
     for lst in grille:
         lst:Ligne;
+        total += "  "
         for elt in lst:
-            total += str(Dessin[elt])
+            total += str(Dessin[elt])+"   "
+        total += "\n├───┼───┼───┼───┼───┼───┤"
         total += "\n"
+    total = DeleteLast(total)
+    total += "\n└───┴───┴───┴───┴───┴───┘"
     return total
 
+def DeleteLast(texte:str) -> str:
+    """
+    Function delete supprimant la derniere ligne d'une chaine de charactere
+    texte(str): texte ou supprimer la derniere ligne  
+    return(str): texte sans la derniere ligne  
+    """
+    assert(type(texte) == str)
+
+    
+    lignes = texte.splitlines()
+    lignes_sans_derniere = lignes[:-1]
+    texte_sans_derniere = '\n'.join(lignes_sans_derniere)
+    return texte_sans_derniere
 
 def place(grille:Grille,player:int,position:int) -> bool:
     """

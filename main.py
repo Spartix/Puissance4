@@ -73,15 +73,15 @@ def winner(grille:Grille) -> int:
     lst.sort(key=lambda info: info[0],reverse=True)
     return lst[0][1]
 
-"play()"
-gtest =[
+play()
+"""gtest =[
           [0, 0, 0, 0, 0, 0],
           [0, 0, 2, 1, 0, 0], 
           [0, 2, 1, 0, 1, 0], 
           [2, 1, 0, 1, 2, 0], 
-          [0, 0, 1, 2, 0, 0], 
-          [0, 0, 2, 0, 0, 0]
-          ]
+          [0, 0, 1, 2, 0, 2], 
+          [0, 0, 2, 0, 0, 1]
+          ]"""
 "print(Gen())"
-"(diagonale(gtest))"
+"print(diagonale(gtest))"
 
